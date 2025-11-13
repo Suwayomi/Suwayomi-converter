@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+.env
+.env.*
+!.env.example
+
+/src/graphql-env.ts
+
+# Ignore files for PNPM, NPM, YARN and BUN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lock

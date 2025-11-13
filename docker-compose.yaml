@@ -1,0 +1,20 @@
+---
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/suwayomi-server:preview
+    # user: 1000:1000
+    environment:
+      TZ: Etc/UTC # Use TZ database name from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      DOWNLOAD_CONVERSIONS: '{"default"={target="http://suwayomi-converter:5678/?out=webp&format=(\"preset\":\"drawing\",\"effort\":6,\"quality\":90)&resize=(\"width\":1080,\"withoutEnlargement\":true)"}}'
+    volumes:
+      - ./data:/home/suwayomi/.local/share/Tachidesk
+    ports:
+      - '4567:4567'
+    restart: on-failure:3
+
+  suwayomi-converter:
+    container_name: suwayomi-converter
+    image: ghcr.io/suwayomi/suwayomi-converter:latest
+    environment:
+      TZ: Etc/UTC # Use TZ database name from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    restart: on-failure:3
