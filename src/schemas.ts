@@ -18,7 +18,6 @@ const jpegOptionsSchema = z.object({
 	force: z.boolean().optional()
 });
 
-
 const pngOptionsSchema = z.object({
 	progressive: z.boolean().optional(),
 	compressionLevel: z.number().min(0).max(9).optional(),
@@ -31,7 +30,6 @@ const pngOptionsSchema = z.object({
 	dither: z.number().min(0).max(1).optional(),
 	force: z.boolean().optional()
 });
-
 
 const webpOptionsSchema = z.object({
 	quality: z.number().min(1).max(100).optional(),
@@ -61,8 +59,6 @@ const webpOptionsSchema = z.object({
 	force: z.boolean().optional()
 });
 
-
-
 const gifOptionsSchema = z.object({
 	reuse: z.boolean().optional(),
 	progressive: z.boolean().optional(),
@@ -80,7 +76,6 @@ const gifOptionsSchema = z.object({
 	force: z.boolean().optional()
 });
 
-
 const jp2OptionsSchema = z.object({
 	quality: z.number().min(1).max(100).optional(),
 	lossless: z.boolean().optional(),
@@ -91,7 +86,6 @@ const jp2OptionsSchema = z.object({
 		.optional(),
 	force: z.boolean().optional()
 });
-
 
 const tiffOptionsSchema = z.object({
 	quality: z.number().min(1).max(100).optional(),
@@ -117,8 +111,6 @@ const tiffOptionsSchema = z.object({
 	miniswhite: z.boolean().optional()
 });
 
-
-
 const avifOptionsSchema = z.object({
 	quality: z.number().min(1).max(100).optional(),
 	lossless: z.boolean().optional(),
@@ -127,8 +119,6 @@ const avifOptionsSchema = z.object({
 	// cspell:disable-next-line
 	bitdepth: z.union([z.literal(8), z.literal(10), z.literal(12)]).optional()
 });
-
-
 
 const heifOptionsSchema = z.object({
 	compression: z.union([z.literal('av1'), z.literal('hevc')]).optional(),
@@ -139,8 +129,6 @@ const heifOptionsSchema = z.object({
 	// cspell:disable-next-line
 	bitdepth: z.union([z.literal(8), z.literal(10), z.literal(12)]).optional()
 });
-
-
 
 const jxlOptionsSchema = z.object({
 	distance: z.number().min(0).max(15).optional(),
@@ -153,7 +141,6 @@ const jxlOptionsSchema = z.object({
 		.union([z.number().min(0).optional(), z.number().min(0).array()])
 		.optional()
 });
-
 
 const rawOptionsSchema = z.object({
 	depth: z
@@ -172,7 +159,6 @@ const rawOptionsSchema = z.object({
 		])
 		.optional()
 });
-
 
 export const outputsSchema = z.union([
 	z.literal('jpeg'),
@@ -231,8 +217,6 @@ export const resizeOptionsSchema = z.object({
 	withoutReduction: z.boolean().optional(),
 	fastShrinkOnLoad: z.boolean().optional()
 });
-
-
 
 export const formSchema = z.object({
 	image: z.instanceof(File)
