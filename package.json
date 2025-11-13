@@ -1,5 +1,5 @@
 {
-	"name": "suwayomi-converter2",
+	"name": "suwayomi-converter",
 	"module": "index.ts",
 	"type": "module",
 	"private": true,

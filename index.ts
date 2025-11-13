@@ -6,7 +6,7 @@ import {
 	optionsSchemas,
 	outputsSchema,
 	resizeOptionsSchema
-} from './schemas';
+} from './src/schemas';
 
 function params(
 	searchParams: URLSearchParams,
