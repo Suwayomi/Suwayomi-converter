@@ -11,7 +11,7 @@ to convert all images to webp with preset=drawing, effort=6, resize to a max wid
 ```toml
 server.downloadConversions = {
     "default"={
-        target="http://localhost:5678/?out=webp&format=(\"preset\":\"drawing\",\"effort\":6,\"quality\":90)&resize=(\"width\":1080,\"height\":16383,\"withoutEnlargement\":true,\"fit\":\"inside\"")"
+        target="http://localhost:5678/?out=webp&format=(\"preset\":\"drawing\",\"effort\":6,\"quality\":90)&resize=(\"width\":1080,\"height\":16383,\"withoutEnlargement\":true,\"fit\":\"inside\")"
     }
 }
 ```
