@@ -6,12 +6,12 @@ it is built using [sharp](https://www.npmjs.com/package/sharp) and allows all of
 
 ## Example:
 
-to convert all images to webp with preset=drawing, effort=6 and resize to a max width of 1080, and using the [defaults](https://sharp.pixelplumbing.com/api-output/#webp) for all other options
+to convert all images to webp with preset=drawing, effort=6, resize to a max width of 1080 and max height of 16383 (the webp maximum), and using the [defaults](https://sharp.pixelplumbing.com/api-output/#webp) for all other options
 
 ```toml
 server.downloadConversions = {
     "default"={
-        target="http://192.168.1.131:3001/?out=webp&format=(\"preset\":\"drawing\",\"effort\":6)&resize=(\"width\":1080,\"withoutEnlargement\":true)"
+        target="http://localhost:5678/?out=webp&format=(\"preset\":\"drawing\",\"effort\":6,\"quality\":90)&resize=(\"width\":1080,\"height\":16383,\"withoutEnlargement\":true,\"fit\":\"inside\"")"
     }
 }
 ```
