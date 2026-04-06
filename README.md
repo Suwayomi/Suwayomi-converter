@@ -16,6 +16,17 @@ server.downloadConversions = {
 }
 ```
 
+you can use the `compress` searchParam to have it only return if the new file is smaller than the original (this is slower as it has to wait for the conversion to be done before it can return the image)
+
+```toml
+server.downloadConversions = {
+    "default"={
+        target="http://localhost:5678/?out=webp&compress&format=(\"preset\":\"drawing\",\"effort\":6,\"quality\":90)"
+    }
+}
+```
+
+
 ## Devs:
 
 To install dependencies:

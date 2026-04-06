@@ -34,6 +34,18 @@ const POST = async (req: Request) => {
 		const sFormatted = format(s, out.data, params(searchParams, 'format', {}));
 		const sResized = resize(sFormatted, params(searchParams, 'resize', {}));
 		Readable.fromWeb(file.stream()).pipe(sResized);
+
+		if (searchParams.has('compress')) {
+			const initialFileSize = file.size;
+
+			const compressedFile = await sResized.toBuffer();
+			const compressedFileSize = compressedFile.byteLength;
+
+			if (compressedFileSize > initialFileSize) {
+				throw new Error('Compressed file is larger than original file');
+			}
+		}
+
 		return new Response(sResized, {
 			status: 200,
 			headers: { 'Content-Type': 'application/octet-stream' }
