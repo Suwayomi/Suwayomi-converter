@@ -165,13 +165,11 @@ export const outputsSchema = z.union([
 	z.literal('png'),
 	z.literal('webp'),
 	z.literal('gif'),
-	// not supported in the base build of sharp
-	// z.literal('jp2'),
+	z.literal('jp2'),
 	z.literal('tiff'),
 	z.literal('avif'),
 	z.literal('heif'),
-	// not supported in the base build of sharp
-	// z.literal('jxl'),
+	z.literal('jxl'),
 	z.literal('raw')
 ]);
 

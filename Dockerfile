@@ -30,7 +30,11 @@ RUN cd /temp/prod && bun install --frozen-lockfile --production
 RUN cd /temp/prod/node_modules/sharp && bun run build
 
 FROM base AS runtime-base
-RUN apt-get update && apt-get install -y --no-install-recommends libvips && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libvips \
+    libheif-plugin-aomenc \
+    libheif-plugin-x265 \
+    && rm -rf /var/lib/apt/lists/*
 COPY --from=install /usr/local/lib /usr/local/lib
 COPY --from=install /usr/local/bin/vips /usr/local/bin/vips
 RUN ldconfig
