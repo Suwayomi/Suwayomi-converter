@@ -62,11 +62,14 @@ const POST = async (req: Request) => {
 	}
 };
 
+const IDLE_TIMEOUT = Number(Bun.env.IDLE_TIMEOUT ?? 10);
+
 Bun.serve({
 	port: 5678,
 	routes: {
 		'/': { POST }
 	},
+	idleTimeout: IDLE_TIMEOUT,
 	fetch() {
 		return new Response('Not Found', { status: 404 });
 	}
