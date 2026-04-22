@@ -4,15 +4,15 @@ FROM oven/bun:1.3.11 AS base
 WORKDIR /usr/src/app
 
 FROM base AS install
+ADD --unpack=true --checksum=sha256:41e9a1439cd57dcc6d4435a085e2cfe181d9da1962fa84a484f09e8b536e4b77 \
+    https://github.com/libvips/libvips/releases/download/v8.17.3/vips-8.17.3.tar.xz /vips/
+
 RUN sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
-    && apt-get build-dep -y vips \
-    && apt-get install -y --no-install-recommends curl ca-certificates
+    && apt-get build-dep -y vips
 
 # build libvips
-RUN curl -fsSL 'https://github.com/libvips/libvips/releases/download/v8.17.3/vips-8.17.3.tar.xz' -o vips.tar.xz \
-    && tar xf vips.tar.xz \
-    && cd vips-8.17.3 \
+RUN cd /vips/vips-8.17.3 \
     && meson setup build --prefix /usr/local --buildtype=release \
     && cd build \
     && meson compile \
